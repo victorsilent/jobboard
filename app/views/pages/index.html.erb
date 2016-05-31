@@ -1,9 +1,21 @@
 <h1>Hello <%=user_signed_in? ? current_user.name.split(" ").map(&:capitalize).join(' ') : "Folks"%></h1>
 <ul class="nav nav-tabs">
-
   <%if !user_signed_in?%>
     <li role="presentation"><%= link_to('Login', new_user_session_path) %></li>
   <%else%>
-    <li role="presentation"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+    <li role="presentation"><%= link_to('New Post', new_post_path) %></li>
+    <li class="pull-right"role="presentation"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
   <%end%>
 </ul>
+<%if user_signed_in?%>
+  <h2>Our Posts :)</h2>
+  <br>
+  <%current_user.posts.each do |post|%>
+      <div class="panel panel-default">
+        <div class="panel-heading"><%=link_to post.title, post%></div>
+        <div class="panel-body">
+          <%=post.body%>
+        </div>
+      </div>
+  <%end%>
+<%end%>
