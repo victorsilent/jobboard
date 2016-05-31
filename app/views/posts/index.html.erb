@@ -1,0 +1,10 @@
+<%@posts.each do |post|%>
+    <div class="panel panel-default">
+      <div class="panel-heading"><%=link_to post.title, post%></div>
+      <div class="panel-body">
+        <%=post.body%>
+      </div>
+      <div class="panel-footer">Post by <%=post.user.name%></div>
+
+    </div>
+<%end%>
