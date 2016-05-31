@@ -1,0 +1,8 @@
+<div class="form-group">
+<%=form_for [@post,@comment] do |f|%>
+  <%=f.label :body%>
+  <%=f.text_area :body,class:"form-control",row:10%>
+  <br>
+  <%=f.submit "New comment",class:"btn btn-primary"%>
+<%end%>
+</div>
